@@ -31,13 +31,13 @@ def answer(run, name):
     return json.loads((run / f"{name}.json").read_text())
 
 
-def section(sid, body, notes, pad="120px 128px 96px", gap=36, center=True):
+def section(sid, body, notes, pad="120px 128px 96px", gap=36, center=True, mark=True):
     just = "center" if center else "flex-start"
     return (f'<section id="{sid}" style="background:{BG}; color:{INK}; font-family:Rubik, Arial, sans-serif; '
             f'padding:{pad}; display:flex; flex-direction:column; justify-content:{just}; gap:{gap}px">\n'
             f'{body}\n'
-            f'  <img src="deck/media/mark3d.png" alt="Mobium" style="position:absolute; right:48px; top:40px; width:64px; height:64px; object-fit:contain">\n'
-            f'  <aside>{htmlmod.escape(notes)}</aside>\n</section>\n')
+            + (f'  <img src="deck/media/mark3d.png" alt="Mobium" style="position:absolute; right:48px; top:40px; width:64px; height:64px; object-fit:contain">\n' if mark else '')
+            + f'  <aside>{htmlmod.escape(notes)}</aside>\n</section>\n')
 
 
 def eyebrow(text, color=BRASS):
@@ -130,10 +130,10 @@ def slides():
     out.append(("cover", section("cover", f"""  <p style="font-family:{MONO}; font-size:24px; color:{BRASS}; letter-spacing:2px; text-transform:uppercase">Audio testing &nbsp;·&nbsp; Mobium</p>
   <h1 style="font-size:132px; font-weight:600; line-height:1.04; letter-spacing:-2px">Hear the App</h1>
   <div style="width:180px; height:5px; background:{RED}"></div>
-  <img src="deck/media/mark3d.png" alt="" style="position:absolute; right:128px; top:520px; width:340px; height:340px; object-fit:contain">
+  <video src="deck/media/mobium-logo.mp4" poster="deck/media/mobium-logo.jpg" aria-label="The Mobium logo turns into a blue butterfly and back" style="position:absolute; right:128px; top:560px; width:360px; height:360px; object-fit:cover; border-radius:26px" autoplay muted loop playsinline></video>
 {para("An app can say it is playing and play nothing. How a test hears what it played, asserts it, and learns what cut across it — measured on an Android emulator and a Pixel 8 Pro.", size=38, width=1150)}
   <p style="position:absolute; left:128px; bottom:64px; font-family:{MONO}; font-size:24px; color:{DIM}">Lana Begunova &nbsp;·&nbsp; SDET &mdash; AI | UI | API &nbsp;·&nbsp; Seattle</p>""",
-        "Go straight to the cold open: three sources, one silence. The introduction comes after it, in one line.", pad="128px 128px 160px", gap=40)))
+        "Go straight to the cold open: three sources, one silence. The introduction comes after it, in one line. The tile on the right is Mobium's logo turning into a butterfly and back; let it loop.", pad="128px 128px 160px", gap=40, mark=False)))
 
     rows = "".join(
         f'<div style="display:flex; justify-content:space-between; align-items:baseline; font-family:{MONO}; font-size:40px; '
@@ -242,13 +242,6 @@ def slides():
     {''.join(f'<div style="padding-left:30px; border-left:6px solid {RULE}"><p style="font-size:34px; font-weight:500">{a}</p><p style="font-size:28px; font-weight:300; color:{DIM}; margin-top:6px; line-height:1.4">{b}</p></div>' for a, b in [("iOS", "refused, saying why: a simulator's sound plays through the Mac, and an iPhone's stays on it."), ("A phone's sound", "not captured; its interruptions are."), ("Level", "follows the device's volume, so it is reported, not asserted."), ("The system's own sounds", "are in the capture: with touch sounds on, a tap is a tenth of a second of sound.")])}
   </div>""",
         "Each limit is a refusal with a reason, or a number in the answer, never a silent pass.")))
-
-    out.append(("found", section("found", f"""{eyebrow("Building the demo")}
-{h("The demo found three bugs.", 76)}
-  <div style="display:grid; gap:22px; width:1600px">
-    {''.join(f'<div style="padding-left:30px; border-left:6px solid {RULE}"><p style="font-size:34px; font-weight:500">{a}</p><p style="font-size:28px; font-weight:300; color:{DIM}; margin-top:6px; line-height:1.4">{b}</p></div>' for a, b in [("A tone that began inside a window had no pitch", "it failed one run in three on Android 17, and passed on 15 by luck of timing."), ("A capture saved into a folder not yet made was lost", "after it had stopped. The repository's own test file found it."), ("A tap's click read as 12 Hz", "found walking the tutorial. A pitch now has to repeat three times.")])}
-  </div>""",
-        "Each was fixed with a test that failed first, and each is written up in Mobium's challenges log. Writing the quick start and tutorial from scratch is what found the last two.")))
 
     out.append(("close", section("close", f"""{eyebrow("Try it")}
 {h("Hear your app in a few minutes.", 84)}
@@ -371,6 +364,7 @@ TEMPLATE = """<!doctype html>
   }}
   function render() {{
     slides.forEach(function (el, n) {{ el.classList.toggle('is-active', n === i); }});
+    slides[i].querySelectorAll('video[autoplay]').forEach(function (m) {{ m.play().catch(function () {{}}); }});
     hud.textContent = (i + 1) + ' / ' + {count};
     bar.style.width = ((i + 1) / {count} * 100) + '%';
     notesEl.innerHTML = '';

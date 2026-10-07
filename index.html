@@ -63,11 +63,10 @@
   <p style="font-family:'Fira Code', 'Courier New', monospace; font-size:24px; color:#E0A526; letter-spacing:2px; text-transform:uppercase">Audio testing &nbsp;·&nbsp; Mobium</p>
   <h1 style="font-size:132px; font-weight:600; line-height:1.04; letter-spacing:-2px">Hear the App</h1>
   <div style="width:180px; height:5px; background:#C4452F"></div>
-  <img src="deck/media/mark3d.png" alt="" style="position:absolute; right:128px; top:520px; width:340px; height:340px; object-fit:contain">
+  <video src="deck/media/mobium-logo.mp4" poster="deck/media/mobium-logo.jpg" aria-label="The Mobium logo turns into a blue butterfly and back" style="position:absolute; right:128px; top:560px; width:360px; height:360px; object-fit:cover; border-radius:26px" autoplay muted loop playsinline></video>
   <p style="font-size:38px; font-weight:300; line-height:1.42; color:#BDC6CE; width:1150px;">An app can say it is playing and play nothing. How a test hears what it played, asserts it, and learns what cut across it — measured on an Android emulator and a Pixel 8 Pro.</p>
   <p style="position:absolute; left:128px; bottom:64px; font-family:'Fira Code', 'Courier New', monospace; font-size:24px; color:#94A0AB">Lana Begunova &nbsp;·&nbsp; SDET &mdash; AI | UI | API &nbsp;·&nbsp; Seattle</p>
-  <img src="deck/media/mark3d.png" alt="Mobium" style="position:absolute; right:48px; top:40px; width:64px; height:64px; object-fit:contain">
-  <aside>Go straight to the cold open: three sources, one silence. The introduction comes after it, in one line.</aside>
+  <aside>Go straight to the cold open: three sources, one silence. The introduction comes after it, in one line. The tile on the right is Mobium&#x27;s logo turning into a butterfly and back; let it loop.</aside>
 </section>
 </div>
 <div class="slide" data-id="open"><section id="open" style="background:#141A21; color:#EDEAE3; font-family:Rubik, Arial, sans-serif; padding:120px 128px 96px; display:flex; flex-direction:column; justify-content:center; gap:36px">
@@ -248,16 +247,6 @@ recording what interrupts the app's audio — a phone's sound is not captured
   <aside>Each limit is a refusal with a reason, or a number in the answer, never a silent pass.</aside>
 </section>
 </div>
-<div class="slide" data-id="found"><section id="found" style="background:#141A21; color:#EDEAE3; font-family:Rubik, Arial, sans-serif; padding:120px 128px 96px; display:flex; flex-direction:column; justify-content:center; gap:36px">
-  <p style="font-family:'Fira Code', 'Courier New', monospace; font-size:26px; color:#E0A526; letter-spacing:2px; text-transform:uppercase">Building the demo</p>
-  <h2 style="font-size:76px; font-weight:600; line-height:1.08; letter-spacing:-1px">The demo found three bugs.</h2>
-  <div style="display:grid; gap:22px; width:1600px">
-    <div style="padding-left:30px; border-left:6px solid #2A343E"><p style="font-size:34px; font-weight:500">A tone that began inside a window had no pitch</p><p style="font-size:28px; font-weight:300; color:#94A0AB; margin-top:6px; line-height:1.4">it failed one run in three on Android 17, and passed on 15 by luck of timing.</p></div><div style="padding-left:30px; border-left:6px solid #2A343E"><p style="font-size:34px; font-weight:500">A capture saved into a folder not yet made was lost</p><p style="font-size:28px; font-weight:300; color:#94A0AB; margin-top:6px; line-height:1.4">after it had stopped. The repository's own test file found it.</p></div><div style="padding-left:30px; border-left:6px solid #2A343E"><p style="font-size:34px; font-weight:500">A tap's click read as 12 Hz</p><p style="font-size:28px; font-weight:300; color:#94A0AB; margin-top:6px; line-height:1.4">found walking the tutorial. A pitch now has to repeat three times.</p></div>
-  </div>
-  <img src="deck/media/mark3d.png" alt="Mobium" style="position:absolute; right:48px; top:40px; width:64px; height:64px; object-fit:contain">
-  <aside>Each was fixed with a test that failed first, and each is written up in Mobium&#x27;s challenges log. Writing the quick start and tutorial from scratch is what found the last two.</aside>
-</section>
-</div>
 <div class="slide" data-id="close"><section id="close" style="background:#141A21; color:#EDEAE3; font-family:Rubik, Arial, sans-serif; padding:120px 128px 96px; display:flex; flex-direction:column; justify-content:center; gap:36px">
   <p style="font-family:'Fira Code', 'Courier New', monospace; font-size:26px; color:#E0A526; letter-spacing:2px; text-transform:uppercase">Try it</p>
   <h2 style="font-size:84px; font-weight:600; line-height:1.08; letter-spacing:-1px">Hear your app in a few minutes.</h2>
@@ -280,7 +269,7 @@ recording what interrupts the app's audio — a phone's sound is not captured
 <div id="notes"></div>
 <script>
 (function () {
-  var NOTES = ["Go straight to the cold open: three sources, one silence. The introduction comes after it, in one line.", "MobiumApp's Audio Demo plays two seconds of zeros: a player that is started, and silent. The app's own line says playing. Android's audio service, asked the ordinary way, says the player is started, exactly what it says for a tone. Press play: that is the capture, and the only thing on it is the tap's own click near the start. Then introduce yourself in one line.", "Three parts, and a fourth on real phones. Everything on the slides was measured on devices; the evidence is in the repository.", "Part 1: what Mobium hears, and from where.", "The answer to the stop: saved evidence/2026-10-07-android-emulator/act2-sequence.wav: 6.443s of audio: 0.0\u20130.3s silence, 0.3\u20132.4s 440 Hz (-42 dBFS), 2.4\u20133.3s silence, 3.3\u20135.4s 880 Hz (-42 dBFS), 5.4\u20136.4s silence \u2014 at media volume 5 of 15. The level is minus 42 dBFS because the emulator's media volume is 5 of 15; Part 2 comes back to that.", "The emulator streams its audio in packets of 20 to 30 milliseconds. Mobium reads it with Go's standard library, places it by the clock so a pause in the stream is silence where it fell, and writes a WAV and a timeline.", "Part 2: turning the timeline into a test.", "The assertion is part of the stop, so it is the same from the command line, in a test file, and from every client. The capture is saved even when the expectation fails: that is when you want to listen to it.", "heard.test.json asserts what was played; wrong.test.json expects what was not, and must fail, each test saying what it heard. Both are in the repository and run in under twenty seconds each.", "Act 4 of the demo sets the emulator's media volume and puts it back. A silent capture that says volume 0 is a test environment to fix, not an app to blame.", "Part 3: the moment an app's audio is most likely to go wrong.", "Press play, sound on. The tone, then the ring, and no tone while it rings: Android silenced the app for the call and gave it back after. The app's own line said playing throughout. The screen recording and the capture were started together and aligned by the ring's first moment, 0.7 seconds apart.", "From the demo's act 5. The red lane is the app muted for the call, from Android's audio service; the amber lane the ringtone's own player. Between them the timeline holds the ring's pitches and no 440 Hz.", "The alarm does not silence the Audio Demo, which asks for no audio focus: its tone plays on under the alarm's louder melody. An app that holds audio focus would pause itself; either way the interruption is reported. A touch's click is not an interruption.", "Part 4: the limits, and what is left when the sound is out of reach.", "Measured on a Pixel 8 Pro with the owner's permission. Capturing from the shell heard one app's own samples, but a call's mute is the player's own volume, which no such capture sees, and the system's ringtone is kept out of capture altogether. The audio service's log has both, so that is the answer on a phone.", "Each limit is a refusal with a reason, or a number in the answer, never a silent pass.", "Each was fixed with a test that failed first, and each is written up in Mobium's challenges log. Writing the quick start and tutorial from scratch is what found the last two.", "The quick start installs Mobium, builds MobiumApp and hears the Audio Demo in about ten minutes. Every output in it was run from scratch."];
+  var NOTES = ["Go straight to the cold open: three sources, one silence. The introduction comes after it, in one line. The tile on the right is Mobium's logo turning into a butterfly and back; let it loop.", "MobiumApp's Audio Demo plays two seconds of zeros: a player that is started, and silent. The app's own line says playing. Android's audio service, asked the ordinary way, says the player is started, exactly what it says for a tone. Press play: that is the capture, and the only thing on it is the tap's own click near the start. Then introduce yourself in one line.", "Three parts, and a fourth on real phones. Everything on the slides was measured on devices; the evidence is in the repository.", "Part 1: what Mobium hears, and from where.", "The answer to the stop: saved evidence/2026-10-07-android-emulator/act2-sequence.wav: 6.443s of audio: 0.0\u20130.3s silence, 0.3\u20132.4s 440 Hz (-42 dBFS), 2.4\u20133.3s silence, 3.3\u20135.4s 880 Hz (-42 dBFS), 5.4\u20136.4s silence \u2014 at media volume 5 of 15. The level is minus 42 dBFS because the emulator's media volume is 5 of 15; Part 2 comes back to that.", "The emulator streams its audio in packets of 20 to 30 milliseconds. Mobium reads it with Go's standard library, places it by the clock so a pause in the stream is silence where it fell, and writes a WAV and a timeline.", "Part 2: turning the timeline into a test.", "The assertion is part of the stop, so it is the same from the command line, in a test file, and from every client. The capture is saved even when the expectation fails: that is when you want to listen to it.", "heard.test.json asserts what was played; wrong.test.json expects what was not, and must fail, each test saying what it heard. Both are in the repository and run in under twenty seconds each.", "Act 4 of the demo sets the emulator's media volume and puts it back. A silent capture that says volume 0 is a test environment to fix, not an app to blame.", "Part 3: the moment an app's audio is most likely to go wrong.", "Press play, sound on. The tone, then the ring, and no tone while it rings: Android silenced the app for the call and gave it back after. The app's own line said playing throughout. The screen recording and the capture were started together and aligned by the ring's first moment, 0.7 seconds apart.", "From the demo's act 5. The red lane is the app muted for the call, from Android's audio service; the amber lane the ringtone's own player. Between them the timeline holds the ring's pitches and no 440 Hz.", "The alarm does not silence the Audio Demo, which asks for no audio focus: its tone plays on under the alarm's louder melody. An app that holds audio focus would pause itself; either way the interruption is reported. A touch's click is not an interruption.", "Part 4: the limits, and what is left when the sound is out of reach.", "Measured on a Pixel 8 Pro with the owner's permission. Capturing from the shell heard one app's own samples, but a call's mute is the player's own volume, which no such capture sees, and the system's ringtone is kept out of capture altogether. The audio service's log has both, so that is the answer on a phone.", "Each limit is a refusal with a reason, or a number in the answer, never a silent pass.", "The quick start installs Mobium, builds MobiumApp and hears the Audio Demo in about ten minutes. Every output in it was run from scratch."];
   var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
   var hud = document.getElementById('hud');
   var bar = document.querySelector('#bar > i');
@@ -295,8 +284,9 @@ recording what interrupts the app's audio — a phone's sound is not captured
   }
   function render() {
     slides.forEach(function (el, n) { el.classList.toggle('is-active', n === i); });
-    hud.textContent = (i + 1) + ' / ' + 19;
-    bar.style.width = ((i + 1) / 19 * 100) + '%';
+    slides[i].querySelectorAll('video[autoplay]').forEach(function (m) { m.play().catch(function () {}); });
+    hud.textContent = (i + 1) + ' / ' + 18;
+    bar.style.width = ((i + 1) / 18 * 100) + '%';
     notesEl.innerHTML = '';
     if (NOTES[i]) {
       var b = document.createElement('b'); b.textContent = 'Speaker notes';
@@ -311,14 +301,14 @@ recording what interrupts the app's audio — a phone's sound is not captured
   function go(n) {
     // Leaving a slide stops what it was playing.
     slides[i].querySelectorAll('audio, video').forEach(function (m) { m.pause(); });
-    i = Math.max(0, Math.min(19 - 1, n)); render();
+    i = Math.max(0, Math.min(18 - 1, n)); render();
   }
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { go(i + 1); e.preventDefault(); }
     else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { go(i - 1); e.preventDefault(); }
     else if (e.key === 'Home') { go(0); }
-    else if (e.key === 'End') { go(19 - 1); }
+    else if (e.key === 'End') { go(18 - 1); }
     else if (e.key === 's' || e.key === 'S') { showNotes = !showNotes; render(); }
     else if (e.key === 'f' || e.key === 'F') {
       if (document.fullscreenElement) { document.exitFullscreen(); }
@@ -332,7 +322,7 @@ recording what interrupts the app's audio — a phone's sound is not captured
   window.addEventListener('resize', fit);
 
   var start = parseInt(location.hash.slice(1), 10);
-  if (start > 0 && start <= 19) { i = start - 1; }
+  if (start > 0 && start <= 18) { i = start - 1; }
   fit(); render();
 })();
 </script>
