@@ -149,8 +149,36 @@ changes nothing; `cmd audio set-volume` is the one that sets it.
 
 ## 4. An alarm
 
-*Re-recorded once Mobium's fix for a click read as a pitch is on
-`@latest`.*
+Another app's sound over the app is an interruption too. The Clock app's
+timer, set from adb for four seconds, rings with the system's alarm sound
+while the tone plays; on an emulator Clock is then stopped outright, since
+nobody's alarms are there:
+
+```sh
+mobium audio start --app dev.mobium.mobiumapp
+mobium tap testid=audioLoop
+adb shell am start -a android.intent.action.SET_TIMER --ei android.intent.extra.alarm.LENGTH 4 --ez android.intent.extra.alarm.SKIP_UI true
+adb shell am force-stop com.google.android.deskclock
+mobium tap testid=audioStop
+mobium audio stop -o alarm.wav
+```
+
+```
+saved ~/mobium-audio-demo/alarm.wav: 8.327s of audio: 0.0–0.7s silence, 0.7–0.8s sound, no one pitch (-47 dBFS), 0.8–4.9s 440 Hz (-42 dBFS), 4.9–5.1s 528 Hz (-19 dBFS), 5.1–5.2s sound, no one pitch (-22 dBFS), 5.2–5.3s 593 Hz (-18 dBFS), 5.3–5.7s sound, no one pitch (-17 dBFS), 5.7–5.8s 259 Hz (-17 dBFS), 5.8–5.9s sound, no one pitch (-19 dBFS), 5.9–6.0s 331 Hz (-18 dBFS), 6.0–6.3s 390 Hz (-20 dBFS), 6.3–6.4s sound, no one pitch (-20 dBFS), 6.4–6.8s 521 Hz (-18 dBFS), 6.8–6.9s sound, no one pitch (-18 dBFS), 6.9–7.0s 587 Hz (-25 dBFS), 7.0–7.3s sound, no one pitch (-20 dBFS), 7.3–8.3s 440 Hz (-42 dBFS) — at media volume 5 of 15; interrupted: an alarm played 4.9–7.2s
+```
+
+Unlike the call, the alarm did not silence the app: the Audio Demo asks for
+no audio focus, so Android left its tone playing under the alarm, which the
+capture heard as the alarm's louder melody, 17 to 25 dB above the tone.
+`interrupted` names the alarm by what its player said it was for. On a real
+phone, stop the timer from Clock's own Stop rather than force-stopping
+Clock, which would cancel the phone owner's alarms; the
+[quick start](QUICKSTART.md#on-an-android-phone) shows the same alarm on a
+Pixel.
+
+This was recorded with Mobium `v0.0.0-20261007121812-439e89a6d02c`, the
+commit after the rest of this page, which reads a tap's click as a sound
+with no pitch where it once came out as "12 Hz".
 
 ## 5. Your own app
 
