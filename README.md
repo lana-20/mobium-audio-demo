@@ -7,9 +7,15 @@ Android emulator and a real Android phone.
 
 | | |
 | --- | --- |
+| **[Quick start](docs/QUICKSTART.md)** | install Mobium, put MobiumApp on an emulator, and hear a silence the app calls playing, a sequence as a timeline, the same asserted, and a call cutting across it |
+| **[Tutorial](docs/TUTORIAL.md)** | from Python, what the answer holds, the volume, an alarm, your own app, CI, and proving it on your devices |
 | **[Evidence](evidence/README.md)** | every run behind the numbers here: transcripts, WAVs, each capture's answer and a drawing of it, the test reports |
 | **[Tests](tests/)** | `heard.test.json` asserts what was played; `wrong.test.json` must fail, saying what was heard |
 | **[From Python](examples/hear.py)** | the same capture and assertion from a script |
+
+Every command and output in the quick start and the tutorial was run from
+scratch — Mobium installed with `go install`, MobiumApp and this repository
+freshly cloned — and is shown as it printed.
 
 Everything here runs. `scripts/demo.sh` drives one device through five
 acts and keeps the evidence of each; `scripts/summarize.py` writes

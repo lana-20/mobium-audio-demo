@@ -74,8 +74,15 @@ open_demo() {
   $M wait testid=audioState >/dev/null
 }
 
-# ended waits for the Audio Demo to say its sound is over.
+# ended waits for the Audio Demo to say the sound just started is over: it
+# first waits for "playing", since the line the last sound left already
+# says "finished", and a wait met by it would stop a capture mid-tone.
 ended() {
+  i=0
+  while [ $i -lt 20 ]; do
+    case "$($M text testid=audioState 2>/dev/null)" in playing:*) break ;; esac
+    sleep 0.1; i=$((i + 1))
+  done
   i=0
   while [ $i -lt 40 ]; do
     case "$($M text testid=audioState 2>/dev/null)" in finished:*|stopped:*) return 0 ;; esac
@@ -164,7 +171,9 @@ if [ "$KIND" = android-emulator ]; then
   say "Act 4 — the volume"
   note "The same tone at media volume 15, 5, 1 and 0. What arrives follows the volume; at 0 a playing app is silence, and the answer says the volume it was taken at. The volume is put back as it was found."
   open_demo
-  was=$(adb -s "$DEV" shell cmd audio get-stream-volume 3 2>/dev/null | grep -o '[0-9]*' | tail -1)
+  # Read from dumpsys: `cmd audio get-stream-volume` prints nothing on
+  # Android 15.
+  was=$(adb -s "$DEV" shell dumpsys audio | sed -n '/^- STREAM_MUSIC:/,/streamVolume/p' | sed -n 's/.*streamVolume:\([0-9]*\).*/\1/p')
   for v in 15 5 1 0; do
     adb -s "$DEV" shell cmd audio set-volume 3 "$v" >/dev/null
     note "Media volume set to $v."

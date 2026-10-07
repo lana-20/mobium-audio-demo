@@ -24,10 +24,14 @@ def audio_demo(device):
     device.tap("label=Audio Demo")
 
 
-def played(device, button):
-    """Tap one of the Audio Demo's buttons and wait for its sound to end."""
+def played(device, button, finished):
+    """Tap one of the Audio Demo's buttons and wait for its sound to end.
+
+    The wait names this sound's own line: "finished:" alone is met at once
+    by the line the last sound left, and the capture would stop mid-tone.
+    """
     device.tap(f"testid={button}")
-    device.wait_for("text=finished:", timeout_ms=10000)
+    device.wait_for("testid=audioState", condition="text", text=f"finished: {finished}", timeout_ms=10000)
     time.sleep(0.5)
 
 
@@ -38,7 +42,7 @@ try:
     # The sequence, asserted at the stop: two pitches, in order, each about
     # two seconds long.
     device.audio("start")
-    played(device, "audioSequence")
+    played(device, "audioSequence", "440 Hz 2 s, silence 1 s, 880 Hz 2 s")
     try:
         heard = device.audio("stop", "sequence.wav", expect=[
             {"hz": 440, "min_ms": 1800, "max_ms": 2300},
@@ -55,7 +59,7 @@ try:
 
     # A wrong expectation fails, says what was heard, and keeps the capture.
     device.audio("start")
-    played(device, "audioTone")
+    played(device, "audioTone", "440 Hz for 2 s")
     try:
         device.audio("stop", "wrong.wav", expect=[{"hz": 880}])
     except NotConfirmedError as e:
