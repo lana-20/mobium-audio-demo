@@ -1,0 +1,24 @@
+{
+  "title": "Hear the App: Audio Testing with Mobium",
+  "order": [
+    "cover",
+    "open",
+    "premise",
+    "part1",
+    "hear",
+    "how",
+    "part2",
+    "assert",
+    "test",
+    "volume",
+    "part3",
+    "call-video",
+    "call",
+    "any",
+    "part4",
+    "phone",
+    "limits",
+    "found",
+    "close"
+  ]
+}

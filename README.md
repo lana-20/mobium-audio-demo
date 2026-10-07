@@ -7,9 +7,10 @@ Android emulator and a real Android phone.
 
 | | |
 | --- | --- |
+| **[The deck](https://lana-20.github.io/mobium-audio-demo/)** | *Hear the App*, the talk: 19 slides with the captured sound and a call heard as it rang (arrow keys move, S shows the speaker notes) |
 | **[Quick start](docs/QUICKSTART.md)** | install Mobium, put MobiumApp on an emulator, and hear a silence the app calls playing, a sequence as a timeline, the same asserted, and a call cutting across it |
 | **[Tutorial](docs/TUTORIAL.md)** | from Python, what the answer holds, the volume, an alarm, your own app, CI, and proving it on your devices |
-| **[Carousel](carousel/mobium-audio.pdf)** | ten slides for LinkedIn, audio start to finish, 1080 × 1350 a page; built by `scripts/build_carousel.py`, every figure read from the evidence |
+| **[Carousel](https://lana-20.github.io/mobium-audio-demo/carousel/)** | ten slides for LinkedIn, audio start to finish; [as a PDF](carousel/mobium-audio.pdf), 1080 × 1350 a page; built by `scripts/build_carousel.py`, every figure read from the evidence |
 | **[Evidence](evidence/README.md)** | every run behind the numbers here: transcripts, WAVs, each capture's answer and a drawing of it, the test reports |
 | **[Tests](tests/)** | `heard.test.json` asserts what was played; `wrong.test.json` must fail, saying what was heard |
 | **[From Python](examples/hear.py)** | the same capture and assertion from a script |

@@ -1,0 +1,13 @@
+<section id="assert" style="background:#141A21; color:#EDEAE3; font-family:Rubik, Arial, sans-serif; padding:120px 128px 96px; display:flex; flex-direction:column; justify-content:center; gap:36px">
+  <p style="font-family:'Fira Code', 'Courier New', monospace; font-size:26px; color:#E0A526; letter-spacing:2px; text-transform:uppercase">At the stop</p>
+  <h2 style="font-size:76px; font-weight:600; line-height:1.08; letter-spacing:-1px">Pitch and length, in order.</h2>
+  <pre style="font-family:'Fira Code', 'Courier New', monospace; font-size:30px; line-height:1.6; color:#BDC6CE; background:#0E1318; border:1px solid #2A343E; border-radius:16px; padding:28px 34px; white-space:pre-wrap"><span style="color:#5E6A76">$</span> mobium audio stop -o seq.wav <span style="color:#E0A526">--expect 440:1.8-2.3,880:1.8-2.3</span>
+<span style="color:#9AD3B1">saved seq.wav: … 440 Hz … 880 Hz …</span>
+
+<span style="color:#5E6A76">$</span> mobium audio stop -o tone.wav <span style="color:#E0A526">--expect 880</span>
+<span style="color:#E2735C">error: expected 880 Hz; heard 440 Hz for 2.1s (0.3–2.4s)
+— the capture is saved at tone.wav</span></pre>
+  <p style="font-size:32px; font-weight:300; line-height:1.42; color:#BDC6CE; width:1550px;">A wrong expectation fails, says what was heard, and keeps the capture as the evidence. --expect silence asserts nothing was heard; a sound of a fifth of a second or less, like a tap's click, does not count.</p>
+  <img src="deck/media/mark3d.png" alt="Mobium" style="position:absolute; right:48px; top:40px; width:64px; height:64px; object-fit:contain">
+  <aside>The assertion is part of the stop, so it is the same from the command line, in a test file, and from every client. The capture is saved even when the expectation fails: that is when you want to listen to it.</aside>
+</section>

@@ -1,0 +1,13 @@
+<section id="test" style="background:#141A21; color:#EDEAE3; font-family:Rubik, Arial, sans-serif; padding:120px 128px 96px; display:flex; flex-direction:column; justify-content:center; gap:36px">
+  <p style="font-family:'Fira Code', 'Courier New', monospace; font-size:26px; color:#E0A526; letter-spacing:2px; text-transform:uppercase">In a test file</p>
+  <h2 style="font-size:76px; font-weight:600; line-height:1.08; letter-spacing:-1px">One step. Five clients.</h2>
+  <pre style="font-family:'Fira Code', 'Courier New', monospace; font-size:28px; line-height:1.6; color:#BDC6CE; background:#0E1318; border:1px solid #2A343E; border-radius:16px; padding:28px 34px; white-space:pre-wrap">{"audio": {"action": "stop", "path": "mobium-report/sequence.wav", "expect": [
+  {"hz": 440, "min_ms": 1800, "max_ms": 2300},
+  {"hz": 880, "min_ms": 1800, "max_ms": 2300}
+]}}</pre>
+  <pre style="font-family:'Fira Code', 'Courier New', monospace; font-size:28px; line-height:1.6; color:#BDC6CE; background:#0E1318; border:1px solid #2A343E; border-radius:16px; padding:28px 34px; white-space:pre-wrap"><span style="color:#5E6A76">$</span> mobium test tests/heard.test.json   <span style="color:#9AD3B1">2 passed (16.4s)</span>
+<span style="color:#5E6A76">$</span> mobium test tests/wrong.test.json   <span style="color:#E2735C">0 passed, 2 failed (14.5s)</span></pre>
+  <p style="font-size:32px; font-weight:300; line-height:1.42; color:#BDC6CE;">The same from Python, Java, JavaScript, Go and .NET: a wrong expectation raises NotConfirmed, saying what was heard.</p>
+  <img src="deck/media/mark3d.png" alt="Mobium" style="position:absolute; right:48px; top:40px; width:64px; height:64px; object-fit:contain">
+  <aside>heard.test.json asserts what was played; wrong.test.json expects what was not, and must fail, each test saying what it heard. Both are in the repository and run in under twenty seconds each.</aside>
+</section>

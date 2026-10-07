@@ -1,0 +1,17 @@
+<section id="call-video" style="background:#141A21; color:#EDEAE3; font-family:Rubik, Arial, sans-serif; padding:120px 128px 96px; display:flex; flex-direction:column; justify-content:center; gap:36px">
+  <div style="display:flex; gap:64px; align-items:center">
+    <div style="flex:1; display:flex; flex-direction:column; gap:30px">
+  <p style="font-family:'Fira Code', 'Courier New', monospace; font-size:26px; color:#E0A526; letter-spacing:2px; text-transform:uppercase">Pixel 7 emulator · Android 15</p>
+  <h2 style="font-size:76px; font-weight:600; line-height:1.08; letter-spacing:-1px">A call came in. Listen.</h2>
+  <p style="font-size:32px; font-weight:300; line-height:1.42; color:#BDC6CE;">The tone plays; the emulator rings for five seconds; the tone comes back. The sound is what Mobium captured, laid under the screen recording.</p>
+  <pre style="font-family:'Fira Code', 'Courier New', monospace; font-size:26px; line-height:1.6; color:#BDC6CE; background:#0E1318; border:1px solid #2A343E; border-radius:16px; padding:28px 34px; white-space:pre-wrap"><span style="color:#5E6A76">$</span> mobium call ring
+<span style="color:#5E6A76">$</span> mobium call hang
+<span style="color:#5E6A76">$</span> mobium audio stop -o call.wav
+<span style="color:#E0A526">interrupted: muted for a call 3.7–8.5s,
+  a ringtone played 3.9–8.6s</span></pre>
+    </div>
+    <video controls preload="metadata" poster="deck/media/call-poster.jpg" src="deck/media/call-heard.mp4" style="height:740px; margin-top:40px; border:1px solid #2A343E; border-radius:18px; background:#0E1318"></video>
+  </div>
+  <img src="deck/media/mark3d.png" alt="Mobium" style="position:absolute; right:48px; top:40px; width:64px; height:64px; object-fit:contain">
+  <aside>Press play, sound on. The tone, then the ring, and no tone while it rings: Android silenced the app for the call and gave it back after. The app&#x27;s own line said playing throughout. The screen recording and the capture were started together and aligned by the ring&#x27;s first moment, 0.7 seconds apart.</aside>
+</section>
