@@ -1,0 +1,15 @@
+{
+  "device": "android-phone",
+  "act1": "",
+  "act2": "",
+  "act3": {
+    "heard": "",
+    "wrong": ""
+  },
+  "act4": "",
+  "act5": {
+    "call": "",
+    "alarm": "dev.mobium.mobiumapp's audio over 12.214s \u2014 its sound is not captured on a phone; interrupted: an alarm played 5.3\u201310.5s, muted, the device's volume at its lowest 2 times, each under 0.25s"
+  },
+  "refused": ""
+}

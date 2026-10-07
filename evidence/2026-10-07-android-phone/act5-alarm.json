@@ -1,0 +1,40 @@
+{
+  "app": "dev.mobium.mobiumapp",
+  "device": "android-phone",
+  "elapsed": 12214000000,
+  "interruptions": [
+    {
+      "from": 5269055438,
+      "kind": "alarm",
+      "to": 10451055438,
+      "usage": "USAGE_ALARM"
+    },
+    {
+      "from": 5349055438,
+      "kind": "muted",
+      "reason": "streamVolume",
+      "to": 5391055438
+    },
+    {
+      "from": 10708055438,
+      "kind": "muted",
+      "reason": "streamVolume",
+      "to": 10793055438
+    }
+  ],
+  "recording": false,
+  "volumes": [
+    {
+      "index": 12,
+      "max": 25,
+      "min": 0,
+      "stream": "media"
+    },
+    {
+      "index": 5,
+      "max": 7,
+      "min": 0,
+      "stream": "alarm"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="222" viewBox="0 0 960 222" font-family="-apple-system, Helvetica, Arial, sans-serif">
+<rect width="960" height="222" fill="#fff"/>
+<text x="96" y="28" font-size="16" font-weight="600" fill="#1d2433">Act 5 — an incoming call over the tone</text>
+<text x="86" y="70.0" font-size="13" text-anchor="end" fill="#6b7385">heard</text>
+<rect x="96" y="48" width="840" height="34" fill="none" stroke="#d9dde5"/>
+<rect x="119.3" y="48" width="7.8" height="34" fill="#9aa3b5"/>
+<rect x="127.1" y="48" width="179.0" height="34" fill="hsl(96, 70%, 48%)"/>
+<text x="216.6" y="70.0" font-size="13" text-anchor="middle" fill="#fff" font-weight="600">440 Hz</text>
+<rect x="313.9" y="48" width="7.8" height="34" fill="hsl(179, 70%, 48%)"/>
+<rect x="321.7" y="48" width="7.8" height="34" fill="hsl(196, 70%, 48%)"/>
+<rect x="329.5" y="48" width="15.6" height="34" fill="hsl(180, 70%, 48%)"/>
+<rect x="345.0" y="48" width="7.8" height="34" fill="#9aa3b5"/>
+<rect x="352.8" y="48" width="15.6" height="34" fill="hsl(180, 70%, 48%)"/>
+<rect x="368.4" y="48" width="23.3" height="34" fill="hsl(195, 70%, 48%)"/>
+<rect x="391.7" y="48" width="62.3" height="34" fill="hsl(180, 70%, 48%)"/>
+<text x="422.8" y="70.0" font-size="13" text-anchor="middle" fill="#fff" font-weight="600">1051 Hz</text>
+<rect x="617.4" y="48" width="23.3" height="34" fill="hsl(180, 70%, 48%)"/>
+<rect x="640.7" y="48" width="38.9" height="34" fill="hsl(196, 70%, 48%)"/>
+<rect x="679.7" y="48" width="7.8" height="34" fill="hsl(179, 70%, 48%)"/>
+<rect x="687.4" y="48" width="202.3" height="34" fill="hsl(96, 70%, 48%)"/>
+<text x="788.6" y="70.0" font-size="13" text-anchor="middle" fill="#fff" font-weight="600">440 Hz</text>
+<rect x="889.8" y="48" width="7.8" height="34" fill="#9aa3b5"/>
+<text x="86" y="114.0" font-size="13" text-anchor="end" fill="#6b7385">muted</text>
+<rect x="291.3" y="98" width="383.4" height="22" fill="#c43d3d" opacity="0.9"/>
+<text x="86" y="158.0" font-size="13" text-anchor="end" fill="#6b7385">ringtone</text>
+<rect x="306.6" y="142" width="370.8" height="22" fill="#e0a526" opacity="0.9"/>
+<line x1="96.0" y1="170" x2="96.0" y2="175" stroke="#6b7385"/>
+<text x="96.0" y="192" font-size="11" text-anchor="middle" fill="#6b7385">0s</text>
+<line x1="173.8" y1="170" x2="173.8" y2="175" stroke="#6b7385"/>
+<text x="173.8" y="192" font-size="11" text-anchor="middle" fill="#6b7385">1s</text>
+<line x1="251.6" y1="170" x2="251.6" y2="175" stroke="#6b7385"/>
+<text x="251.6" y="192" font-size="11" text-anchor="middle" fill="#6b7385">2s</text>
+<line x1="329.5" y1="170" x2="329.5" y2="175" stroke="#6b7385"/>
+<text x="329.5" y="192" font-size="11" text-anchor="middle" fill="#6b7385">3s</text>
+<line x1="407.3" y1="170" x2="407.3" y2="175" stroke="#6b7385"/>
+<text x="407.3" y="192" font-size="11" text-anchor="middle" fill="#6b7385">4s</text>
+<line x1="485.1" y1="170" x2="485.1" y2="175" stroke="#6b7385"/>
+<text x="485.1" y="192" font-size="11" text-anchor="middle" fill="#6b7385">5s</text>
+<line x1="562.9" y1="170" x2="562.9" y2="175" stroke="#6b7385"/>
+<text x="562.9" y="192" font-size="11" text-anchor="middle" fill="#6b7385">6s</text>
+<line x1="640.7" y1="170" x2="640.7" y2="175" stroke="#6b7385"/>
+<text x="640.7" y="192" font-size="11" text-anchor="middle" fill="#6b7385">7s</text>
+<line x1="718.6" y1="170" x2="718.6" y2="175" stroke="#6b7385"/>
+<text x="718.6" y="192" font-size="11" text-anchor="middle" fill="#6b7385">8s</text>
+<line x1="796.4" y1="170" x2="796.4" y2="175" stroke="#6b7385"/>
+<text x="796.4" y="192" font-size="11" text-anchor="middle" fill="#6b7385">9s</text>
+<line x1="874.2" y1="170" x2="874.2" y2="175" stroke="#6b7385"/>
+<text x="874.2" y="192" font-size="11" text-anchor="middle" fill="#6b7385">10s</text>
+<text x="936" y="28" font-size="12" text-anchor="end" fill="#6b7385">media volume 5 of 15</text>
+</svg>

@@ -1,0 +1,23 @@
+{
+  "description": "The same app, expecting what it did not play — both tests fail, each saying what was heard, and each capture is still saved.",
+  "app": "dev.mobium.mobiumapp",
+  "beforeEach": [
+    {"scroll_to": {"target": "label=Audio Demo", "direction": "down"}},
+    {"tap": "label=Audio Demo"},
+    {"wait_for": {"target": "testid=audioState"}}
+  ],
+  "tests": [
+    {"name": "880 Hz expected, 440 Hz played", "steps": [
+      {"audio": {"action": "start"}},
+      {"tap": "testid=audioTone"},
+      {"wait_for": {"target": "text=finished:", "timeout_ms": 10000}},
+      {"audio": {"action": "stop", "path": "mobium-report/wrong-pitch.wav", "expect": [{"hz": 880}]}}
+    ]},
+    {"name": "silence expected, a tone played", "steps": [
+      {"audio": {"action": "start"}},
+      {"tap": "testid=audioTone"},
+      {"wait_for": {"target": "text=finished:", "timeout_ms": 10000}},
+      {"audio": {"action": "stop", "path": "mobium-report/wrong-silence.wav", "expect": []}}
+    ]}
+  ]
+}

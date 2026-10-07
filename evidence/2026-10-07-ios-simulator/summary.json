@@ -1,0 +1,15 @@
+{
+  "device": "ios-simulator",
+  "act1": "",
+  "act2": "",
+  "act3": {
+    "heard": "",
+    "wrong": ""
+  },
+  "act4": "",
+  "act5": {
+    "call": "",
+    "alarm": ""
+  },
+  "refused": "waiting for WebDriverAgent to start...\nthe simulator is on its home screen: a new session starts WebDriverAgent, whose runner takes the foreground and leaves it to the home screen, not to the app that was in front \u2014 app_launch brings an app back...\nerror: a simulator's audio is not captured yet \u2014 it plays through the Mac's own audio device for simulators, which Mobium does not read. Capture on an Android emulator"
+}

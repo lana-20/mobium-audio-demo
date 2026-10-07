@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="134" viewBox="0 0 960 134" font-family="-apple-system, Helvetica, Arial, sans-serif">
+<rect width="960" height="134" fill="#fff"/>
+<text x="96" y="28" font-size="16" font-weight="600" fill="#1d2433">Act 2 — a tone</text>
+<text x="86" y="70.0" font-size="13" text-anchor="end" fill="#6b7385">heard</text>
+<rect x="96" y="48" width="840" height="34" fill="none" stroke="#d9dde5"/>
+<rect x="169.0" y="48" width="511.0" height="34" fill="hsl(96, 70%, 48%)"/>
+<text x="424.5" y="70.0" font-size="13" text-anchor="middle" fill="#fff" font-weight="600">440 Hz</text>
+<line x1="96.0" y1="82" x2="96.0" y2="87" stroke="#6b7385"/>
+<text x="96.0" y="104" font-size="11" text-anchor="middle" fill="#6b7385">0s</text>
+<line x1="339.3" y1="82" x2="339.3" y2="87" stroke="#6b7385"/>
+<text x="339.3" y="104" font-size="11" text-anchor="middle" fill="#6b7385">1s</text>
+<line x1="582.7" y1="82" x2="582.7" y2="87" stroke="#6b7385"/>
+<text x="582.7" y="104" font-size="11" text-anchor="middle" fill="#6b7385">2s</text>
+<line x1="826.0" y1="82" x2="826.0" y2="87" stroke="#6b7385"/>
+<text x="826.0" y="104" font-size="11" text-anchor="middle" fill="#6b7385">3s</text>
+<text x="936" y="28" font-size="12" text-anchor="end" fill="#6b7385">media volume 5 of 15</text>
+</svg>

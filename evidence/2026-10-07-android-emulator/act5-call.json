@@ -1,0 +1,154 @@
+{
+  "app": "dev.mobium.mobiumapp",
+  "bytes": 1036274,
+  "device": "emulator-5554",
+  "duration": 10794000000,
+  "elapsed": 10794000000,
+  "interruptions": [
+    {
+      "from": 2509888396,
+      "kind": "muted",
+      "reason": "call",
+      "to": 7436888396
+    },
+    {
+      "from": 2705888396,
+      "kind": "ringtone",
+      "to": 7470888396,
+      "usage": "USAGE_NOTIFICATION_RINGTONE"
+    }
+  ],
+  "path": "evidence/2026-10-07-android-emulator/act5-call.wav",
+  "recording": false,
+  "timeline": [
+    {
+      "from": 0,
+      "sound": false,
+      "to": 300000000
+    },
+    {
+      "from": 300000000,
+      "level": -47.3,
+      "sound": true,
+      "to": 400000000
+    },
+    {
+      "from": 400000000,
+      "hz": 440,
+      "level": -41.8,
+      "sound": true,
+      "to": 2700000000
+    },
+    {
+      "from": 2700000000,
+      "sound": false,
+      "to": 2800000000
+    },
+    {
+      "from": 2800000000,
+      "hz": 1047,
+      "level": -36.2,
+      "sound": true,
+      "to": 2900000000
+    },
+    {
+      "from": 2900000000,
+      "hz": 1241,
+      "level": -22.2,
+      "sound": true,
+      "to": 3000000000
+    },
+    {
+      "from": 3000000000,
+      "hz": 1051,
+      "level": -24.4,
+      "sound": true,
+      "to": 3200000000
+    },
+    {
+      "from": 3200000000,
+      "level": -23.2,
+      "sound": true,
+      "to": 3300000000
+    },
+    {
+      "from": 3300000000,
+      "hz": 1055,
+      "level": -24.6,
+      "sound": true,
+      "to": 3500000000
+    },
+    {
+      "from": 3500000000,
+      "hz": 1240,
+      "level": -23.2,
+      "sound": true,
+      "to": 3800000000
+    },
+    {
+      "from": 3800000000,
+      "hz": 1051,
+      "level": -31.4,
+      "sound": true,
+      "to": 4600000000
+    },
+    {
+      "from": 4600000000,
+      "sound": false,
+      "to": 6700000000
+    },
+    {
+      "from": 6700000000,
+      "hz": 1055,
+      "level": -23.9,
+      "sound": true,
+      "to": 7000000000
+    },
+    {
+      "from": 7000000000,
+      "hz": 1241,
+      "level": -23.4,
+      "sound": true,
+      "to": 7500000000
+    },
+    {
+      "from": 7500000000,
+      "hz": 1043,
+      "level": -28.2,
+      "sound": true,
+      "to": 7600000000
+    },
+    {
+      "from": 7600000000,
+      "hz": 440,
+      "level": -41.6,
+      "sound": true,
+      "to": 10200000000
+    },
+    {
+      "from": 10200000000,
+      "level": -42.6,
+      "sound": true,
+      "to": 10300000000
+    },
+    {
+      "from": 10300000000,
+      "sound": false,
+      "to": 10794062500
+    }
+  ],
+  "volumes": [
+    {
+      "index": 5,
+      "max": 15,
+      "min": 0,
+      "stream": "media"
+    },
+    {
+      "index": 6,
+      "max": 7,
+      "min": 1,
+      "stream": "alarm"
+    }
+  ]
+}

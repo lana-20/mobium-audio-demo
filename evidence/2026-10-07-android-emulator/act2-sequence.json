@@ -1,0 +1,54 @@
+{
+  "app": "dev.mobium.mobiumapp",
+  "bytes": 618552,
+  "device": "emulator-5554",
+  "duration": 6443000000,
+  "elapsed": 6443000000,
+  "path": "evidence/2026-10-07-android-emulator/act2-sequence.wav",
+  "recording": false,
+  "timeline": [
+    {
+      "from": 0,
+      "sound": false,
+      "to": 300000000
+    },
+    {
+      "from": 300000000,
+      "hz": 440,
+      "level": -41.8,
+      "sound": true,
+      "to": 2400000000
+    },
+    {
+      "from": 2400000000,
+      "sound": false,
+      "to": 3300000000
+    },
+    {
+      "from": 3300000000,
+      "hz": 880,
+      "level": -41.8,
+      "sound": true,
+      "to": 5400000000
+    },
+    {
+      "from": 5400000000,
+      "sound": false,
+      "to": 6442791666
+    }
+  ],
+  "volumes": [
+    {
+      "index": 5,
+      "max": 15,
+      "min": 0,
+      "stream": "media"
+    },
+    {
+      "index": 6,
+      "max": 7,
+      "min": 1,
+      "stream": "alarm"
+    }
+  ]
+}

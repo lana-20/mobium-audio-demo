@@ -1,0 +1,6 @@
+{
+  "failed": [
+    "android-emulator\u0000tests/wrong.test.json\u0000880 Hz expected, 440 Hz played",
+    "android-emulator\u0000tests/wrong.test.json\u0000silence expected, a tone played"
+  ]
+}
