@@ -328,7 +328,7 @@ its sound is not captured on a phone;
 
     out.append(slide(10, "Try it", f"""    {logo_html(16)}
     <h2>Hear your app in a few minutes.</h2>
-<pre><span class="p">$</span> go install github.com/mobiumdev/mobium/cmd/mobium@latest
+<pre><span class="p">$</span> go install github.com/mobiumdev/mobium/cmd/mobium@main
 <span class="p">$</span> mobium audio start
 <span class="p">$</span> mobium audio stop -o heard.wav <span class="k">--expect 440</span></pre>
     <div class="links">

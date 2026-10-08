@@ -8,7 +8,7 @@ with what it printed, the WAVs, each stop's answer as JSON, a drawing of each, a
 
 | Run | Act 1: silence | Act 2: the sequence | Act 3: tests | Act 4: the tone by volume | Act 5: a call | Act 5: an alarm |
 | --- | --- | --- | --- | --- | --- | --- |
-| [2026-10-07-android-emulator](2026-10-07-android-emulator/transcript.md) | silence | 440 Hz for 2.1 s, then 880 Hz for 2.1 s | heard: 2 passed (16.4s); wrong: 0 passed, 2 failed (14.5s) | 15: -9.1 dBFS · 5: -41.8 dBFS · 1: -62.5 dBFS · 0: silence | heard 440 Hz at 0.4–2.7 s, 7.6–10.2 s, and 4 other sounds between; interrupted: muted for a call 2.5–7.4 s; a ringtone 2.7–7.5 s | heard 440 Hz at 0.4–4.5 s, 6.8–7.9 s, and 1 other sound between; interrupted: an alarm 4.4–6.7 s |
+| [2026-10-07-android-emulator](2026-10-07-android-emulator/transcript.md) | silence | 440 Hz for 2.1 s, then 880 Hz for 2.1 s | heard: 2 passed (17.3s); wrong: 0 passed, 2 failed (14.5s) | 15: -9.3 dBFS · 5: -41.8 dBFS · 1: -62.5 dBFS · 0: silence | heard 440 Hz at 0.9–3.2 s, 8.1–10.8 s, and 4 other sounds between; interrupted: muted for a call 3.0–8.0 s; a ringtone 3.3–8.0 s | heard 440 Hz at 0.4–4.5 s, 6.6–7.9 s, and 2 other sounds between; interrupted: an alarm 4.4–6.5 s |
 
 ## On phones and iOS
 

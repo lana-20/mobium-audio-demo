@@ -129,7 +129,7 @@ On iOS the capture is refused, saying why.
 ## Run it
 
 ```sh
-go install github.com/mobiumdev/mobium/cmd/mobium@latest
+go install github.com/mobiumdev/mobium/cmd/mobium@main
 scripts/demo.sh emulator-5554                    # all five acts
 ALLOW_PHONE=1 scripts/demo.sh <phone-serial>     # the alarm, on a phone
 python3 scripts/summarize.py                     # evidence/README.md

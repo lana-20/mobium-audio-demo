@@ -1,15 +1,15 @@
 {
   "app": "dev.mobium.mobiumapp",
-  "bytes": 329782,
+  "bytes": 333796,
   "device": "emulator-5554",
-  "duration": 3435000000,
-  "elapsed": 3433000000,
+  "duration": 3477000000,
+  "elapsed": 3477000000,
   "interruptions": [
     {
-      "from": 258780733,
+      "from": 283828130,
       "kind": "muted",
       "reason": "streamVolume",
-      "to": 2284780733
+      "to": 2313828130
     }
   ],
   "path": "evidence/2026-10-07-android-emulator/act4-volume-0.wav",
@@ -29,7 +29,7 @@
     {
       "from": 400000000,
       "sound": false,
-      "to": 3434770833
+      "to": 3476583333
     }
   ],
   "volumes": [

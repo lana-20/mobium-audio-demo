@@ -245,7 +245,7 @@ def slides():
 
     out.append(("close", section("close", f"""{eyebrow("Try it")}
 {h("Hear your app in a few minutes.", 84)}
-{code('<span style="color:#5E6A76">$</span> go install github.com/mobiumdev/mobium/cmd/mobium@latest\n<span style="color:#5E6A76">$</span> mobium audio start\n<span style="color:#5E6A76">$</span> mobium audio stop -o heard.wav <span style="color:' + BRASS + '">--expect 440</span>', size=30)}
+{code('<span style="color:#5E6A76">$</span> go install github.com/mobiumdev/mobium/cmd/mobium@main\n<span style="color:#5E6A76">$</span> mobium audio start\n<span style="color:#5E6A76">$</span> mobium audio stop -o heard.wav <span style="color:' + BRASS + '">--expect 440</span>', size=30)}
   <div style="display:grid; gap:18px; font-family:{MONO}; font-size:32px">
     <a href="https://github.com/mobiumdev/mobium" style="color:{INK}; text-decoration:none">github.com/mobiumdev/mobium</a>
     <a href="https://github.com/lana-20/mobium-audio-demo" style="color:{INK}; text-decoration:none">github.com/lana-20/mobium-audio-demo &nbsp;<span style="color:{DIM}; font-size:24px">quick start, tutorial, evidence</span></a>
