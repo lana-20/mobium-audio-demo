@@ -38,16 +38,18 @@ to hear; [its steps are at the end](#on-an-android-phone).
 ## 2. Install Mobium
 
 ```sh
-go install github.com/mobiumdev/mobium/cmd/mobium@latest
+go install github.com/mobiumdev/mobium/cmd/mobium@main
 mobium --version
 ```
 
 ```
-mobium version v0.0.0-20261007113950-7b2543c995d4
+mobium version v0.0.0-20261008020356-5b57d8f0eb84
 ```
 
-That took 11 seconds. (Mobium has no tagged release yet, so `@latest` is the
-newest commit on `main`.) `mobium` lands in `$(go env GOPATH)/bin`, which
+(Mobium has no tagged release yet, so `@main` is the newest commit. Not
+`@latest`: Go's module proxy settles what that means for an untagged module
+only now and then, and on the day this was written it gave a version eight
+hours and twelve fixes old.) `mobium` lands in `$(go env GOPATH)/bin`, which
 should be on your `PATH`. Check that it sees the emulator:
 
 ```sh
@@ -112,7 +114,7 @@ mobium audio stop -o silence.wav
 ```
 
 ```
-saved ~/mobium-audio-demo/silence.wav: 3.282s of audio: 0.0–0.3s silence, 0.3–0.4s sound, no one pitch (-47 dBFS), 0.4–3.3s silence — at media volume 5 of 15
+saved ~/mobium-audio-demo/silence.wav: 3.264s of audio: 0.0–0.3s silence, 0.3–0.4s sound, no one pitch (-47 dBFS), 0.4–3.3s silence — at media volume 5 of 15
 ```
 
 Silence. The tenth of a second of sound at 0.3 s is the tap's own click:
@@ -130,7 +132,7 @@ mobium audio stop -o sequence.wav
 ```
 
 ```
-saved ~/mobium-audio-demo/sequence.wav: 6.787s of audio: 0.0–0.3s silence, 0.3–2.4s 440 Hz (-42 dBFS), 2.4–3.3s silence, 3.3–5.4s 880 Hz (-42 dBFS), 5.4–6.8s silence — at media volume 5 of 15
+saved ~/mobium-audio-demo/sequence.wav: 6.758s of audio: 0.0–0.3s silence, 0.3–2.4s 440 Hz (-42 dBFS), 2.4–3.3s silence, 3.3–5.4s 880 Hz (-42 dBFS), 5.4–6.8s silence — at media volume 5 of 15
 ```
 
 Each sound, when it was, its pitch and its level. The app wrote its tones at
@@ -150,7 +152,7 @@ mobium audio stop -o sequence.wav --expect 440:1.8-2.3,880:1.8-2.3
 ```
 
 ```
-saved ~/mobium-audio-demo/sequence.wav: 6.79s of audio: 0.0–0.3s silence, 0.3–2.4s 440 Hz (-42 dBFS), 2.4–3.3s silence, 3.3–5.4s 880 Hz (-42 dBFS), 5.4–6.8s silence — at media volume 5 of 15
+saved ~/mobium-audio-demo/sequence.wav: 6.761s of audio: 0.0–0.3s silence, 0.3–2.4s 440 Hz (-42 dBFS), 2.4–3.3s silence, 3.3–5.4s 880 Hz (-42 dBFS), 5.4–6.8s silence — at media volume 5 of 15
 ```
 
 Expect what was not played:
@@ -166,8 +168,9 @@ error: expected 880 Hz; heard 440 Hz for 2.1s (0.3–2.4s) — at media volume 5
 ```
 
 It fails, says what was heard, and keeps the capture. `--expect silence`
-asserts nothing was heard; sounds of 200 ms or less — a tap's click — do
-not count.
+asserts nothing was heard; a lone sound of 200 ms or less — a tap's click —
+does not count, but short sounds that run on into each other, a melody or a
+beeping alarm, do.
 
 The same in a test file is a step:
 
@@ -176,9 +179,9 @@ mobium test tests/heard.test.json
 ```
 
 ```
-  ok    [android · emulator-5554] heard.test.json › the sequence is heard in order (9.7s)
-  ok    [android · emulator-5554] heard.test.json › silence is heard as silence (7.5s)
-2 passed (17.2s)
+  ok    [android · emulator-5554] heard.test.json › the sequence is heard in order (9.9s)
+  ok    [android · emulator-5554] heard.test.json › silence is heard as silence (7.8s)
+2 passed (17.6s)
 ```
 
 ```sh
@@ -186,11 +189,11 @@ mobium test tests/wrong.test.json
 ```
 
 ```
-  FAIL  [android · emulator-5554] wrong.test.json › 880 Hz expected, 440 Hz played (8.1s)
-        step 4 (app_audio): [not_confirmed] step 4 of 4 (app_audio) failed: expected 880 Hz; heard 440 Hz for 2.0s (0.4–2.4s) — at media volume 5 of 15 — the capture is saved at ~/mobium-audio-demo/mobium-report/wrong-pitch.wav; steps 1-3 ran before it, and nothing after
-  FAIL  [android · emulator-5554] wrong.test.json › silence expected, a tone played (7s)
+  FAIL  [android · emulator-5554] wrong.test.json › 880 Hz expected, 440 Hz played (7.7s)
+        step 4 (app_audio): [not_confirmed] step 4 of 4 (app_audio) failed: expected 880 Hz; heard 440 Hz for 2.0s (0.8–2.8s) — at media volume 5 of 15 — the capture is saved at ~/mobium-audio-demo/mobium-report/wrong-pitch.wav; steps 1-3 ran before it, and nothing after
+  FAIL  [android · emulator-5554] wrong.test.json › silence expected, a tone played (6.9s)
         step 4 (app_audio): [not_confirmed] step 4 of 4 (app_audio) failed: expected silence; heard 440 Hz for 2.1s (0.3–2.4s) — at media volume 5 of 15 — the capture is saved at ~/mobium-audio-demo/mobium-report/wrong-silence.wav; steps 1-3 ran before it, and nothing after
-0 passed, 2 failed (15.1s)
+0 passed, 2 failed (14.6s)
 error: 2 of 2 tests failed
 ```
 
@@ -215,7 +218,7 @@ ended a call from 5551234
 The stop's answer ends:
 
 ```
-— at media volume 5 of 15; interrupted: muted for a call 2.7–7.5s, a ringtone played 2.9–7.6s
+— at media volume 5 of 15; interrupted: muted for a call 2.8–7.7s, a ringtone played 3.0–7.8s
 ```
 
 Between those times the timeline holds the ring's own pitches and no

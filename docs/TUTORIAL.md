@@ -7,9 +7,9 @@ tests for your own app, running them in CI, and proving it all on your own
 devices.
 
 Every command and output below was run on 7 October 2026 on a Pixel 7
-emulator (Android 15), with Mobium installed by `go install …@latest` and the
-Python client by `pip` from GitHub, as the quick start sets them up. Paths
-in the outputs are shortened to `~`.
+emulator (Android 15), with Mobium `v0.0.0-20261008020356-5b57d8f0eb84` installed by `go install …@main`
+and the Python client by `pip` from GitHub, as the quick start sets them up.
+Paths in the outputs are shortened to `~`.
 
 ## Contents
 
@@ -38,10 +38,10 @@ not played:
 ```
    0.0– 0.7s  silence
    0.7– 0.8s  sound
-   0.8– 2.9s  440 Hz at -42 dBFS
-   2.9– 3.8s  silence
-   3.8– 5.9s  880 Hz at -42 dBFS
-   5.9– 6.9s  silence
+   0.8– 2.8s  440 Hz at -42 dBFS
+   2.8– 3.7s  silence
+   3.7– 5.8s  880 Hz at -42 dBFS
+   5.8– 6.9s  silence
 heard as expected, at media volume 5 of 15
 a wrong expectation: expected 880 Hz; heard 440 Hz for 2.1s (0.3–2.4s) — at media volume 5 of 15 — the capture is saved at ~/mobium-audio-demo/wrong.wav
 ```
@@ -81,22 +81,22 @@ mobium --json audio stop -o call.wav
 ```json
 {
   "app": "dev.mobium.mobiumapp",
-  "bytes": 1017956,
+  "bytes": 1051460,
   "device": "emulator-5554",
-  "duration": 10603000000,
+  "duration": 10952000000,
   "interruptions": [
-    {"from": 2963899653, "kind": "muted", "reason": "call", "to": 7886899653},
-    {"from": 3192899653, "kind": "ringtone", "to": 7905899653, "usage": "USAGE_NOTIFICATION_RINGTONE"}
+    {"from": 3321366559, "kind": "muted", "reason": "call", "to": 8215366559},
+    {"from": 3524366559, "kind": "ringtone", "to": 8249366559, "usage": "USAGE_NOTIFICATION_RINGTONE"}
   ],
   "path": "~/mobium-audio-demo/call.wav",
   "timeline": [
-    {"from": 0, "sound": false, "to": 700000000},
-    {"from": 700000000, "hz": 781, "level": -47.3, "sound": true, "to": 800000000},
-    {"from": 800000000, "hz": 440, "level": -41.8, "sound": true, "to": 3100000000},
-    {"from": 3100000000, "sound": false, "to": 3300000000},
-    {"from": 3300000000, "hz": 1047, "level": -26.3, "sound": true, "to": 3400000000},
+    {"from": 0, "sound": false, "to": 1000000000},
+    {"from": 1000000000, "level": -47.3, "sound": true, "to": 1100000000},
+    {"from": 1100000000, "hz": 440, "level": -41.8, "sound": true, "to": 3500000000},
+    {"from": 3500000000, "sound": false, "to": 3600000000},
+    {"from": 3600000000, "hz": 1046, "level": -38.6, "sound": true, "to": 3700000000},
     …
-    {"from": 8000000000, "hz": 440, "level": -41.6, "sound": true, "to": 10600000000}
+    {"from": 8300000000, "hz": 440, "level": -41.6, "sound": true, "to": 10952250000}
   ],
   "volumes": [
     {"index": 5, "max": 15, "min": 0, "stream": "media"},
@@ -109,8 +109,8 @@ Times are nanoseconds since the capture started.
 
 - **`timeline`** is what was heard, in tenths of a second: `sound` or not,
   and for a sound its `level` in dBFS (0 is full scale) and its `hz` when
-  one frequency holds most of it. The 781 Hz tenth at 0.7 s is the tap's
-  click; the 1047 Hz and the pitches after it are the ringtone.
+  one frequency holds most of it. The tenth at 1.0 s with no pitch is the
+  tap's click; the 1046 Hz and the pitches after it are the ringtone.
 - **`interruptions`** is what Android's audio service says cut across `app`:
   here the app muted for the call, and a ringtone. `kind` is `muted` — with
   a `reason`: `call`, `streamVolume` (the device's volume at its lowest),
@@ -134,7 +134,7 @@ adb shell cmd audio set-volume 3 5
 ```
 
 ```
-saved ~/mobium-audio-demo/quiet.wav: 3.769s of audio: 0.0–0.6s silence, 0.6–0.7s sound, no one pitch (-47 dBFS), 0.7–3.8s silence — at media volume 0 of 15, muted, where nothing played as media is heard; interrupted: muted, the device's volume at its lowest 0.6–2.6s
+saved ~/mobium-audio-demo/quiet.wav: 3.583s of audio: 0.0–0.6s silence, 0.6–0.7s sound, no one pitch (-47 dBFS), 0.7–3.6s silence — at media volume 0 of 15, muted, where nothing played as media is heard; interrupted: muted, the device's volume at its lowest 0.6–2.6s
 ```
 
 The click is still heard: it plays on the system's stream, not media.
@@ -164,21 +164,18 @@ mobium audio stop -o alarm.wav
 ```
 
 ```
-saved ~/mobium-audio-demo/alarm.wav: 8.327s of audio: 0.0–0.7s silence, 0.7–0.8s sound, no one pitch (-47 dBFS), 0.8–4.9s 440 Hz (-42 dBFS), 4.9–5.1s 528 Hz (-19 dBFS), 5.1–5.2s sound, no one pitch (-22 dBFS), 5.2–5.3s 593 Hz (-18 dBFS), 5.3–5.7s sound, no one pitch (-17 dBFS), 5.7–5.8s 259 Hz (-17 dBFS), 5.8–5.9s sound, no one pitch (-19 dBFS), 5.9–6.0s 331 Hz (-18 dBFS), 6.0–6.3s 390 Hz (-20 dBFS), 6.3–6.4s sound, no one pitch (-20 dBFS), 6.4–6.8s 521 Hz (-18 dBFS), 6.8–6.9s sound, no one pitch (-18 dBFS), 6.9–7.0s 587 Hz (-25 dBFS), 7.0–7.3s sound, no one pitch (-20 dBFS), 7.3–8.3s 440 Hz (-42 dBFS) — at media volume 5 of 15; interrupted: an alarm played 4.9–7.2s
+saved ~/mobium-audio-demo/alarm.wav: 9.96s of audio: 0.0–0.3s silence, 0.3–6.6s 440 Hz (-42 dBFS), 6.6–6.7s sound, no one pitch (-17 dBFS), 6.7–6.8s 524 Hz (-24 dBFS), 6.8–6.9s sound, no one pitch (-22 dBFS), 6.9–7.0s 591 Hz (-17 dBFS), 7.0–7.1s sound, no one pitch (-19 dBFS), 7.1–7.2s 526 Hz (-16 dBFS), 7.2–7.4s sound, no one pitch (-17 dBFS), 7.4–7.5s 260 Hz (-16 dBFS), 7.5–7.6s 297 Hz (-20 dBFS), 7.6–7.7s 329 Hz (-18 dBFS), 7.7–7.8s 391 Hz (-19 dBFS), 7.8–7.9s sound, no one pitch (-22 dBFS), 7.9–8.0s 391 Hz (-19 dBFS), 8.0–8.1s 439 Hz (-20 dBFS), 8.1–8.2s 523 Hz (-19 dBFS), 8.2–8.3s sound, no one pitch (-15 dBFS), 8.3–8.4s 523 Hz (-19 dBFS), 8.4–8.5s sound, no one pitch (-21 dBFS), 8.5–10.0s 440 Hz (-42 dBFS) — at media volume 5 of 15; interrupted: an alarm played 6.5–8.3s
 ```
 
 Unlike the call, the alarm did not silence the app: the Audio Demo asks for
 no audio focus, so Android left its tone playing under the alarm, which the
-capture heard as the alarm's louder melody, 17 to 25 dB above the tone.
+capture heard as the alarm's louder melody, 18 to 27 dB above the tone.
 `interrupted` names the alarm by what its player said it was for. On a real
 phone, stop the timer from Clock's own Stop rather than force-stopping
 Clock, which would cancel the phone owner's alarms; the
 [quick start](QUICKSTART.md#on-an-android-phone) shows the same alarm on a
 Pixel.
 
-This was recorded with Mobium `v0.0.0-20261007121812-439e89a6d02c`, the
-commit after the rest of this page, which reads a tap's click as a sound
-with no pitch where it once came out as "12 Hz".
 
 ## 5. Your own app
 
@@ -187,14 +184,18 @@ emulator, whatever the app is written in. What helps is knowing what to
 assert.
 
 - **Pitch and length, in order.** A beep, a chime, a tone: `--expect
-  880:0.1-0.3`. A sound of 200 ms or less does not count by default, so a
-  short beep needs `--ignore-ms` lowered under it: `--expect 880:0.1-0.3
-  --ignore-ms 50`. `0` is a sound with no one pitch — noise, a click, much
-  of speech — and matches only that: a recording that is partly tonal reads
-  as several sounds, so assert a spoken prompt by when sound starts and
-  stops rather than by one `0`.
+  880:0.1-0.3`. A lone sound of 200 ms or less does not count by default, so
+  a single short beep needs `--ignore-ms` lowered under it: `--expect
+  880:0.1-0.3 --ignore-ms 50`. Short sounds that run on into each other do
+  count, together: a train of beeps is one sound at their pitch, and a
+  melody or a sweep, whose pitch keeps moving, is one sound with no one
+  pitch. `0` is a sound with no one pitch — noise, a click, a melody, much
+  of speech — and matches only that: a recording with long tonal stretches
+  reads as several sounds, so assert a spoken prompt by when sound starts
+  and stops rather than by one `0`.
 - **Silence is an assertion too.** `--expect silence` after muting, after
-  pausing, after a call ends: nothing longer than 200 ms.
+  pausing, after a call ends: nothing longer than 200 ms, alone or run
+  together.
 - **Clicks and the system's sounds.** With touch sounds on, every tap is a
   tenth of a second of sound; `ignore_ms` (default 200) is how short a
   sound may be and not count. Turn touch sounds off on a test emulator if
